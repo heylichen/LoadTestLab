@@ -1,24 +1,25 @@
 package com.alenlee.commons.json;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
- * Created by lc on 2016/5/1.
+ * Created by lichen2 on 2016/5/3.
  */
 public class TestJsonHelperTest {
-    private static final Logger logger = LoggerFactory.getLogger(TestJsonHelperTest.class);
 
-    @Test
-    public void testRead() {
-        String path = "com\\alenlee\\commons\\json\\stock.json";
-        String json = TestJsonHelper.readString(path);
-        JSONObject jo = JSON.parseObject(json);
-        jo.put("age",22);
-        TestJsonHelper.writeJson(path,jo);
-        logger.info("json:{}", json);
-    }
+  @Test
+  public void testRead() {
+    String json = TestJsonHelper.readString("data\\pkgres\\stk.json");
+    System.out.print(json);
+  }
+
+  @Test
+  public void testWrite(){
+    Map<String,String> a = new HashMap<>();
+    a.put("name","張三1");
+    TestJsonHelper.writeJson("data\\pkgres\\stk.json",a);
+  }
 }
